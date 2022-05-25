@@ -678,25 +678,25 @@
     ,{
         "task": {
             "id": "task_0027",
-            "html": "<img sr='/aquetions/deriv1.png'/>"
+            "html": "<img src='/aquetions/deriv1.png'/>"
         },
         "incorrect": [
             {
                 "id": "answer_01",
-                "html": "<img sr='/aquetions/deriv1_2.png'/>"
+                "html": "<img src='/aquetions/deriv1_2.png'/>"
             },
             {
                 "id": "answer_02",
-                "html": "<img sr='/aquetions/deriv1_3.png'/>"
+                "html": "<img src='/aquetions/deriv1_3.png'/>"
             },
             {
                 "id": "answer_03",
-                "html": "<img sr='/aquetions/deriv1_4.png'/>"
+                "html": "<img src='/aquetions/deriv1_4.png'/>"
             }
         ],
         "correct": {
             "id": "answer_04",
-            "html": "<img sr='/aquetions/deriv1_1.png'/>"
+            "html": "<img src='/aquetions/deriv1_1.png'/>"
         },
         "difficulty": "medium",
         "money": 500
@@ -704,7 +704,7 @@
     ,{
         "task": {
             "id": "task_0028",
-            "html": "<img sr='/aquetions/deriv2.png'/>"
+            "html": "<img src='/aquetions/deriv2.png'/>"
         },
         "incorrect": [
             {
@@ -730,7 +730,7 @@
     ,{
         "task": {
             "id": "task_0029",
-            "html": "<img sr='/aquetions/integ2.png'/>"
+            "html": "<img src='/aquetions/integ2.png'/>"
         },
         "incorrect": [
             {
@@ -756,7 +756,7 @@
     ,{
         "task": {
             "id": "task_0030",
-            "html": "<img sr='/aquetions/integ3.png'/>"
+            "html": "<img src='/aquetions/integ3.png'/>"
         },
         "incorrect": [
             {
@@ -782,7 +782,7 @@
     ,{
         "task": {
             "id": "task_0031",
-            "html": "<img sr='/aquetions/integ4.png'/>"
+            "html": "<img src='/aquetions/integ4.png'/>"
         },
         "incorrect": [
             {
@@ -808,7 +808,7 @@
     ,{
         "task": {
             "id": "task_0032",
-            "html": "<img sr='/aquetions/integ4.png'/>"
+            "html": "<img src='/aquetions/integ4.png'/>"
         },
         "incorrect": [
             {
@@ -834,7 +834,7 @@
     ,{
         "task": {
             "id": "task_0033",
-            "html": "<img sr='/aquetions/integ5.png'/>"
+            "html": "<img src='/aquetions/integ5.png'/>"
         },
         "incorrect": [
             {
@@ -860,7 +860,7 @@
     ,{
         "task": {
             "id": "task_0034",
-            "html": "<img sr='/aquetions/integ6.png'/>"
+            "html": "<img src='/aquetions/integ6.png'/>"
         },
         "incorrect": [
             {
@@ -886,7 +886,7 @@
     ,{
         "task": {
             "id": "task_0035",
-            "html": "<img sr='/aquetions/integ7.png'/>"
+            "html": "<img src='/aquetions/integ7.png'/>"
         },
         "incorrect": [
             {
