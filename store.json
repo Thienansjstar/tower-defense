@@ -1,0 +1,71 @@
+{
+    "Spawn Balloon": {
+        "type": "action",
+        "priceType": "fixed",
+        "price": 500
+    },
+    "Sabotage Tower": {
+        "type": "action",
+        "priceType": "fixed",
+        "price": 2500
+    },
+    "Freeze Screen": {
+        "type": "action",
+        "priceType": "fixed",
+        "price": 5000
+    },
+    "Upgrade Protection": {
+        "levels": [
+            {
+                "id": 1,
+                "hp": 100,
+                "price": 0
+            },
+            {
+                "id": 2,
+                "hp": 250,
+                "price": 500
+            },
+            {
+                "id": 3,
+                "hp": 500,
+                "price": 2500
+            }
+        ]
+    },
+    "Boost Income": {
+        "levels": [
+            {
+                "id": 1,
+                "pass": 250,
+                "price": 0
+            },
+            {
+                "id": 2,
+                "pass": 1000,
+                "price": 250
+            },
+            {
+                "id": 3,
+                "pass": 2500,
+                "price": 1000
+            }
+        ]
+    },
+    "Increase Crate Luck": {
+        "levels": [
+            {
+                "id": 1,
+                "price": 0
+            },
+            {
+                "id": 2,
+                "price": 100
+            },
+            {
+                "id": 3,
+                "price": 250
+            }
+        ]
+    }
+}

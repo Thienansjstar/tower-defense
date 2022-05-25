@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Free Money",
+        "chances": [50, 40, 30],
+        "subchances": [
+            {
+                "amount": 50,
+                "chances": [50, 25, 5],
+                "texture": "assets/muney1.png"
+            },
+            {
+                "amount": 100,
+                "chances": [25, 15, 5],
+                "texture": "assets/muney1.png"
+            },
+            {
+                "amount": 250,
+                "chances": [10, 15, 5],
+                "texture": "assets/muney2.png"
+            },
+            {
+                "amount": 500,
+                "chances": [5, 15, 10],
+                "texture": "assets/muney2.png"
+            },
+            {
+                "amount": 1000,
+                "chances": [3, 10, 15],
+                "texture": "assets/muney3.png"
+            },
+            {
+                "amount": 2500,
+                "chances": [3, 10, 25],
+                "texture": "assets/muney3.png"
+            },
+            {
+                "amount": 5000,
+                "chances": [2, 5, 20],
+                "texture": "assets/muney3.png"
+            },
+            {
+                "amount": 10000,
+                "chances": [2, 5, 15],
+                "texture": "assets/muney3.png"
+            }
+        ]
+    },
+    {
+        "name": "Income Multiplier",
+        "chances": [25, 30, 35],
+        "subchances": [
+            {
+                "magnitude": 2,
+                "time": 15,
+                "chances": [40, 20, 10],
+                "texture": "assets/money_multiplier2.png"
+            },
+            {
+                "magnitude": 2,
+                "time": 30,
+                "chances": [30, 40, 20],
+                "texture": "assets/money_multiplier2.png"
+            },
+            {
+                "magnitude": 3,
+                "time": 15,
+                "chances": [20, 40, 30],
+                "texture": "assets/money_multiplier3.png"
+            },
+            {
+                "magnitude": 3,
+                "time": 30,
+                "chances": [10, 20, 40],
+                "texture": "assets/money_multiplier3.png"
+            }
+        ]
+    },
+    {
+        "name": "Free Sabotage",
+        "texture": "assets/damage.gif",
+        "chances": [22, 30, 27]
+    },
+    {
+        "name": "Free Freeze",
+        "texture": "assets/muney3.png",
+        "chances": [3.9, 4.7, 7.5]
+    },
+    {
+        "name": "Millionaire",
+        "texture": "assets/muney3.png",
+        "chances": [0.1, 0.3, 0.5]
+    }
+]

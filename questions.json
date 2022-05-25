@@ -1,0 +1,919 @@
+[
+    {
+        "task": {
+            "id": "integral_ldv",
+            "html": "<img src='/assets/integral_ldA.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "x + arctan(x)"
+            },
+            {
+                "id": "answer_02",
+                "html": "2x - arccsc(x)"
+            },
+            {
+                "id": "answer_03",
+                "html": "x + arccsc(x)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "x - arctan(x)"
+        },
+        "difficulty": "hard",
+        "money": 2500
+    },
+    {
+        "task": {
+            "id": "task_0002",
+            "html": "<img src='/assets/Limits1.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "3/2"
+            },
+            {
+                "id": "answer_02",
+                "html": "0"
+            },
+            {
+                "id": "answer_03",
+                "html": "DNE"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "1"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0003",
+            "html": "A spherical snowball is melting in such a way that it maintains its shape. The snowball is decreasing in volume at a constant rate of 8 cm<sup>3</sup>/hr.  At what rate is the radius of the snowball decreasing at the instant when the radius is 10 cm?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "-1/50π cm<sup>3</sup>/hr"
+            },
+            {
+                "id": "answer_02",
+                "html": "-3/50π cm/hr"
+            },
+            {
+                "id": "answer_03",
+                "html": "3200π cm/hr"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "1/3000π cm/min"
+        },
+        "difficulty": "hard",
+        "money": 2000
+    },
+    {
+        "task": {
+            "id": "task_0004",
+            "html": "If f(x)=sin⁡(ln⁡(2x)), then f'(x)="
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "sin(ln(2x)) / 2x"
+            },
+            {
+                "id": "answer_02",
+                "html": "cos(ln(2x)) / 2x"
+            },
+            {
+                "id": "answer_03",
+                "html": "cos(x/2)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "cos(ln(2x)) / x"
+        },
+        "difficulty": "medium",
+        "money": 250
+    },
+    {
+        "task": {
+            "id": "task_0005",
+            "html": "<img src='/assets/fthrmA.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "2πsin(π<sup>6</sup>) - sin(1)"
+            },
+            {
+                "id": "answer_02",
+                "html": "2πsin(π<sup>3</sup>)"
+            },
+            {
+                "id": "answer_03",
+                "html": "sin(π<sup>2</sup>)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "2πsin(π<sup>6</sup>)"
+        },
+        "difficulty": "medium",
+        "money": 500
+    },
+    {
+        "task": {
+            "id": "task_0006",
+            "html": "Which of the following functions has a removable discontinuity?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "f(x) = (x - 3) / (x<sup>2</sup> + 9)"
+            },
+            {
+                "id": "answer_02",
+                "html": "f(x) = (x + 2) / (x<sup>3</sup> + 4)"
+            },
+            {
+                "id": "answer_03",
+                "html": "f(x) = (x - 2) / (x<sup>3</sup> + 4)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "f(x) = (x + 3) / (x<sup>2</sup> - 9)"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0007",
+            "html": "<img src='/assets/integral_bpA.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "e<sup>π/2</sup> - 1"
+            },
+            {
+                "id": "answer_02",
+                "html": "(e<sup>π/2</sup> - 1) / 2"
+            },
+            {
+                "id": "answer_03",
+                "html": "Integral does not exist"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "(e<sup>π/2</sup> + 1) / 2"
+        },
+        "difficulty": "hard",
+        "money": 3000
+    },
+    {
+        "task": {
+            "id": "task_0008",
+            "html": "Given f'(x) = x<sup>5</sup> + 1 and f(1) = 891, find the tangent line approximation for x = 1.2"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "890.6"
+            },
+            {
+                "id": "answer_02",
+                "html": "890.4"
+            },
+            {
+                "id": "answer_03",
+                "html": "891.6"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "891.4"
+        },
+        "difficulty": "medium",
+        "money": 750
+    },
+    {
+        "task": {
+            "id": "task_0009",
+            "html": "<img src='/assets/integral_limA.png'/><br>Which of the following expresses the following integral as a limit?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "<img src='/assets/integ_lim_c1.png'/>"
+            },
+            {
+                "id": "answer_02",
+                "html": "<img src='/assets/integ_lim_c2.png'/>"
+            },
+            {
+                "id": "answer_03",
+                "html": "<img src='/assets/integ_lim_c4.png'/>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "<img src='/assets/integ_lim_c3.png'/>"
+        },
+        "difficulty": "medium",
+        "money": 1000
+    },
+    {
+        "task": {
+            "id": "task_0010",
+            "html": "Easy question. How many hours does Francis spend on calculus homework every week?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "How am I supposed to know..."
+            },
+            {
+                "id": "answer_02",
+                "html": "10 hours"
+            },
+            {
+                "id": "answer_03",
+                "html": "2 hours"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "Correct answer here"
+        },
+        "difficulty": "easy",
+        "money": 50
+    },
+    {
+        "task": {
+            "id": "task_0011",
+            "html": "<img src='/assets/Limits2.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "1"
+            },
+            {
+                "id": "answer_02",
+                "html": "9"
+            },
+            {
+                "id": "answer_03",
+                "html": "DNE"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "3"
+        },
+        "difficulty": "medium",
+        "money": 250
+    },
+    {
+        "task": {
+            "id": "task_0012",
+            "html": "f(x) = x<sup>3</sup> * sin(3x). F'(x) = "
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "3x<sup>2</sup> * cos(3x)"
+            },
+            {
+                "id": "answer_02",
+                "html": "9x<sup>2</sup> * cos(3x)"
+            },
+            {
+                "id": "answer_03",
+                "html": "3x<sup>2</sup>*sin(3x) + x<sup>3</sup>cos(3x)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "3x<sup>2</sup> * (sin(3x) + x(cos3x))"
+        },
+        "difficulty": "hard",
+        "money": 1500
+    },
+    {
+        "task": {
+            "id": "task_0013",
+            "html": "What is the derivative of f(x)=ln⁡(-3x)?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "1/-3x"
+            },
+            {
+                "id": "answer_02",
+                "html": "-1/3"
+            },
+            {
+                "id": "answer_03",
+                "html": "Not possible 🤣"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "1/x"
+        },
+        "difficulty": "medium",
+        "money": 500
+    },
+    {
+        "task": {
+            "id": "task_0014",
+            "html": "<img src='/assets/graph1.png'/><br>At which X values does f have a removable discontinuity?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "-3"
+            },
+            {
+                "id": "answer_02",
+                "html": "0, -2, 4, 6"
+            },
+            {
+                "id": "answer_03",
+                "html": "-3, -2, 0, 2, 4"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "-3, 2"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0015",
+            "html": "<img src='/assets/graph2.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "NO IT DOES NOT"
+            },
+            {
+                "id": "answer_02",
+                "html": "Yeah it's a sandwich"
+            },
+            {
+                "id": "answer_03",
+                "html": "We didn't learn this..."
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "It's more of a squeeze"
+        },
+        "difficulty": "easy",
+        "money": 50
+    },
+    {
+        "task": {
+            "id": "task_0016",
+            "html": "<img src='/assets/inverse.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "1/2"
+            },
+            {
+                "id": "answer_02",
+                "html": "1/4"
+            },
+            {
+                "id": "answer_03",
+                "html": "2/3"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "1/3"
+        },
+        "difficulty": "medium",
+        "money": 1500
+    },
+    {
+        "task": {
+            "id": "task_0017",
+            "html": "What is the derivative of 3x<sup>3</sup>?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "x<sup>2</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "0.75x<sup>4</sup>"
+            },
+            {
+                "id": "answer_03",
+                "html": "3x<sup>2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "9x<sup>2</sup>"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0018",
+            "html": "What is the derivative of 3x<sup>3</sup>?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "x<sup>2</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "0.75x<sup>4</sup>"
+            },
+            {
+                "id": "answer_03",
+                "html": "3x<sup>2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "9x<sup>2</sup>"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0019",
+            "html": "What is the derivative of 3x<sup>3</sup>?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "x<sup>2</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "0.75x<sup>4</sup>"
+            },
+            {
+                "id": "answer_03",
+                "html": "3x<sup>2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "9x<sup>2</sup>"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0020",
+            "html": "What is the derivative of f(x) = 3x<sup>2</sup>?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "x<sup>3</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "ten"
+            },
+            {
+                "id": "answer_03",
+                "html": "3x<sup>2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "6x"
+        },
+        "difficulty": "easy",
+        "money": 25
+    },
+    {
+        "task": {
+            "id": "task_0021",
+            "html": "How do you spell calculus?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "Calclus"
+            },
+            {
+                "id": "answer_02",
+                "html": "Caculus"
+            },
+            {
+                "id": "answer_03",
+                "html": "Cake"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "Calculus"
+        },
+        "difficulty": "easy",
+        "money": 25
+    },
+    {
+        "task": {
+            "id": "task_0022",
+            "html": "What is the derivative of f(x) = 3?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "3x"
+            },
+            {
+                "id": "answer_02",
+                "html": "x"
+            },
+            {
+                "id": "answer_03",
+                "html": "3"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "0"
+        },
+        "difficulty": "easy",
+        "money": 25
+    },
+    {
+        "task": {
+            "id": "task_0023",
+            "html": "The derivative of sec x with respect to x is given by"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "cosecx"
+            },
+            {
+                "id": "answer_02",
+                "html": "-cosecx"
+            },
+            {
+                "id": "answer_03",
+                "html": "secxcotx"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "secxtanx"
+        },
+        "difficulty": "easy",
+        "money": 75
+    },
+    {
+        "task": {
+            "id": "task_0024",
+            "html": "What is the integral of x from 0 to 9?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "40"
+            },
+            {
+                "id": "answer_02",
+                "html": "9"
+            },
+            {
+                "id": "answer_03",
+                "html": "9/2"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "81/2"
+        },
+        "difficulty": "easy",
+        "money": 50
+    }
+    ,{
+        "task": {
+            "id": "task_0025",
+            "html": "Which of the following is the instantaneous rate of change of the function f(x) = 2x<sup>2</sup> with respect to x when x = 5?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "12"
+            },
+            {
+                "id": "answer_02",
+                "html": "29"
+            },
+            {
+                "id": "answer_03",
+                "html": "15"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "20"
+        },
+        "difficulty": "easy",
+        "money": 75
+    }
+    ,{
+        "task": {
+            "id": "task_0026",
+            "html": "Which of the following is the second derivative of the function f(x) = 4x<sup>2</sup> - 12x"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "4"
+            },
+            {
+                "id": "answer_02",
+                "html": "2"
+            },
+            {
+                "id": "answer_03",
+                "html": "12"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "8"
+        },
+        "difficulty": "easy",
+        "money": 50
+    }
+    ,{
+        "task": {
+            "id": "task_0027",
+            "html": "<img sr='/aquetions/deriv1.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "<img sr='/aquetions/deriv1_2.png'/>"
+            },
+            {
+                "id": "answer_02",
+                "html": "<img sr='/aquetions/deriv1_3.png'/>"
+            },
+            {
+                "id": "answer_03",
+                "html": "<img sr='/aquetions/deriv1_4.png'/>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "<img sr='/aquetions/deriv1_1.png'/>"
+        },
+        "difficulty": "medium",
+        "money": 500
+    }
+    ,{
+        "task": {
+            "id": "task_0028",
+            "html": "<img sr='/aquetions/deriv2.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "5"
+            },
+            {
+                "id": "answer_02",
+                "html": "0"
+            },
+            {
+                "id": "answer_03",
+                "html": "1/(24<sup>1/2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "undefined"
+        },
+        "difficulty": "medium",
+        "money": 300
+    }
+    ,{
+        "task": {
+            "id": "task_0029",
+            "html": "<img sr='/aquetions/integ2.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "arcsin+C"
+            },
+            {
+                "id": "answer_02",
+                "html": "arccos+C"
+            },
+            {
+                "id": "answer_03",
+                "html": "ln(x<sup>2</sup>+1)+C"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "arctan+C"
+        },
+        "difficulty": "easy",
+        "money": 50
+    }
+    ,{
+        "task": {
+            "id": "task_0030",
+            "html": "<img sr='/aquetions/integ3.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "995"
+            },
+            {
+                "id": "answer_02",
+                "html": "1007"
+            },
+            {
+                "id": "answer_03",
+                "html": "108"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "1005"
+        },
+        "difficulty": "medium",
+        "money": 500
+    }
+    ,{
+        "task": {
+            "id": "task_0031",
+            "html": "<img sr='/aquetions/integ4.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "(1/5)sinx + C"
+            },
+            {
+                "id": "answer_02",
+                "html": "-sin5x + C"
+            },
+            {
+                "id": "answer_03",
+                "html": "sin5x + C"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "-(1/5)sin5x + C"
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0032",
+            "html": "<img sr='/aquetions/integ4.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "(1/5)sinx + C"
+            },
+            {
+                "id": "answer_02",
+                "html": "-sin5x + C"
+            },
+            {
+                "id": "answer_03",
+                "html": "sin5x + C"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "-(1/5)sin5x + C"
+        },
+        "difficulty": "easy",
+        "money": 50
+    }
+    ,{
+        "task": {
+            "id": "task_0033",
+            "html": "<img sr='/aquetions/integ5.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "66"
+            },
+            {
+                "id": "answer_02",
+                "html": "51.5"
+            },
+            {
+                "id": "answer_03",
+                "html": "53.5"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "52.5"
+        },
+        "difficulty": "medium",
+        "money": 400
+    }
+    ,{
+        "task": {
+            "id": "task_0034",
+            "html": "<img sr='/aquetions/integ6.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "ln5*5<sup>x</sup> + C"
+            },
+            {
+                "id": "answer_02",
+                "html": "5x<sup>x-1</sup> + C"
+            },
+            {
+                "id": "answer_03",
+                "html": "5<sup>x</sup> + C"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "(5<sup>x</sup>/ln5) + C"
+        },
+        "difficulty": "medium",
+        "money": 300
+    }
+    ,{
+        "task": {
+            "id": "task_0035",
+            "html": "<img sr='/aquetions/integ7.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "ln5*5<sup>x</sup> + C"
+            },
+            {
+                "id": "answer_02",
+                "html": "5x<sup>x-1</sup> + C"
+            },
+            {
+                "id": "answer_03",
+                "html": "5<sup>x</sup> + C"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "3x<sup>6</sup>+x<sup>5"
+        },
+        "difficulty": "medium",
+        "money": 300
+    }
+
+
+
+
+
+    
+    
+]

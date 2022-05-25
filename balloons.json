@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Merd",
+        "levels": [
+            {
+                "level": 1,
+                "sprite": "merd1",
+                "frames": 4
+            },
+            {
+                "level": 2,
+                "sprite": "merd2",
+                "frames": 5
+            },
+            {
+                "level": 3,
+                "sprite": "merd3",
+                "frames": 4
+            }
+        ]
+    },
+    {
+        "name": "Red",
+        "levels": [
+            {
+                "level": 1,
+                "sprite": "red1",
+                "frames": 4
+            },
+            {
+                "level": 2,
+                "sprite": "red2",
+                "frames": 5
+            },
+            {
+                "level": 3,
+                "sprite": "red3",
+                "frames": 4
+            }
+        ]
+    },
+    {
+        "name": "Green",
+        "levels": [
+            {
+                "level": 1,
+                "sprite": "green1",
+                "frames": 4
+            },
+            {
+                "level": 2,
+                "sprite": "green2",
+                "frames": 5
+            },
+            {
+                "level": 3,
+                "sprite": "green3",
+                "frames": 4
+            }
+        ]
+    }
+]
