@@ -364,6 +364,7 @@ io.on('connection', function (socket) {
             msg: "Host is not connected!"
         });
         socket.username = username;
+        io.gameBoard.emit("new player", username);
         socket.emit("username received");
     });
 });

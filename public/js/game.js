@@ -857,9 +857,16 @@ function create() {
     socket.on("challenging", function(data) {
         importantData = data;
     });
+
+    socket.on("new player", function(their_name) {
+        document.getElementById('playerCount') = playerCount++;
+        const newEl = document.createElement("LI");
+        newEl.innerText = their_name;
+        document.getElementById('playerList').appendChild(newEl);
+    });
 }
 
-var importantData, currIndex = -1;
+var importantData, playerCount = 0, currIndex = -1;
 
 function mostMissed() {
     document.getElementById('leaderboard').style.display="none";
