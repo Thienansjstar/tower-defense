@@ -28,7 +28,7 @@
     {
         "task": {
             "id": "task_0002",
-            "html": "<img src='/assets/Limits1.png'/>"
+            "html": "<img src='/assets/Limits1a.png'/>"
         },
         "incorrect": [
             {
@@ -262,7 +262,7 @@
     {
         "task": {
             "id": "task_0011",
-            "html": "<img src='/assets/Limits2.png'/>"
+            "html": "<img src='/assets/Limits2a.png'/>"
         },
         "incorrect": [
             {
