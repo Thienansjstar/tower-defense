@@ -387,7 +387,7 @@
             "html": "It's more of a squeeze"
         },
         "difficulty": "easy",
-        "money": 50
+        "money": 100
     },
     {
         "task": {
@@ -517,7 +517,7 @@
             "html": "6x"
         },
         "difficulty": "easy",
-        "money": 25
+        "money": 100
     },
     {
         "task": {
@@ -543,7 +543,7 @@
             "html": "Calculus"
         },
         "difficulty": "easy",
-        "money": 25
+        "money": 100
     },
     {
         "task": {
@@ -569,7 +569,7 @@
             "html": "0"
         },
         "difficulty": "easy",
-        "money": 25
+        "money": 100
     },
     {
         "task": {
@@ -595,7 +595,7 @@
             "html": "secxtanx"
         },
         "difficulty": "easy",
-        "money": 75
+        "money": 100
     },
     {
         "task": {
@@ -621,7 +621,7 @@
             "html": "81/2"
         },
         "difficulty": "easy",
-        "money": 50
+        "money": 100
     }
     ,{
         "task": {
@@ -647,7 +647,7 @@
             "html": "20"
         },
         "difficulty": "easy",
-        "money": 75
+        "money": 100
     }
     ,{
         "task": {
@@ -673,7 +673,7 @@
             "html": "8"
         },
         "difficulty": "easy",
-        "money": 50
+        "money": 100
     }
     ,{
         "task": {
@@ -751,7 +751,7 @@
             "html": "arctan+C"
         },
         "difficulty": "easy",
-        "money": 50
+        "money": 100
     }
     ,{
         "task": {
@@ -865,23 +865,179 @@
         "incorrect": [
             {
                 "id": "answer_01",
-                "html": "ln5*5<sup>x</sup> + C"
+                "html": "3x<sup>6</sup> + (1/6)x<sup>5</sup> + C"
             },
             {
                 "id": "answer_02",
-                "html": "5x<sup>x-1</sup> + C"
+                "html": "3x<sup>6</sup> + x<sup>4</sup> + C"
             },
             {
                 "id": "answer_03",
-                "html": "5<sup>x</sup> + C"
+                "html": "x<sup>6</sup> + x<sup>4</sup> + C"
             }
         ],
         "correct": {
             "id": "answer_04",
-            "html": "3x<sup>6</sup>+x<sup>5"
+            "html": "3x<sup>6</sup>+x<sup>5 +  C"
         },
         "difficulty": "medium",
         "money": 300
+    }
+    ,{
+        "task": {
+            "id": "task_0035",
+            "html": "<img src='/aquetions/integ8.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "tan(x)"
+            },
+            {
+                "id": "answer_02",
+                "html": "csc(x)"
+            },
+            {
+                "id": "answer_03",
+                "html": "cot(x)"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "sec(x)"
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0036",
+            "html": "<img src='/aquetions/integ9.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "10<sup>19</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "20<sup>20</sup>"
+            },
+            {
+                "id": "answer_03",
+                "html": "400<sup>20</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "10<sup>20</sup>"
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0037",
+            "html": "<img src='/aquetions/integ9.png'/>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "10<sup>19</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "20<sup>20</sup>"
+            },
+            {
+                "id": "answer_03",
+                "html": "400<sup>20</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "10<sup>20</sup>"
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0038",
+            "html": "what is the derivative of 9x<sup>20</sup> + 10x<sup>30</sup> "
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "10<sup>19</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "9x<sup>20</sup> + 10x<sup>30</sup> "
+            },
+            {
+                "id": "answer_03",
+                "html": "180x<sup>20</sup> + 300x<sup>30</sup> "
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "180x<sup>19</sup> + 300x<sup>29</sup> "
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0039",
+            "html": "When is a function concave down?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "Whenever it feels like it"
+            },
+            {
+                "id": "answer_02",
+                "html": "When it is negative"
+            },
+            {
+                "id": "answer_03",
+                "html": "When its derivative is negative"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "When its second derivative is negative"
+        },
+        "difficulty": "easy",
+        "money": 100
+    }
+    ,{
+        "task": {
+            "id": "task_0040",
+            "html": "A particle is moving along a straight line. Its speed is inversely proportional to the square of the distance, S, it has traveled"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "k / t<sup>2</sup>"
+            },
+            {
+                "id": "answer_02",
+                "html": "PIZZA!!!"
+            },
+            {
+                "id": "answer_03",
+                "html": "S = k / S<sup>2</sup>"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "dS/dT = k / S<sup>2</sup>"
+        },
+        "difficulty": "easy",
+        "money": null
     }
 
 

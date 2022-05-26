@@ -115,6 +115,7 @@ function drawGrid(game) {
                         item.alpha = 0.7;
                         if (map[i][j] == -1) {
                             let cost = calcUpgradeCost(i, j);
+                            if (cost > money) return;
                             textPreview = game.add.text(j * 36 + 18, i * 36, cost ? "Upgrade (" + cost + ")" : 'Maxed out')
                                 .setFontSize(10)
                                 .setBackgroundColor("#000")
@@ -139,6 +140,7 @@ function drawGrid(game) {
                             if (!cost) return;
                             upgradeTower(i, j);
                             cost = calcUpgradeCost(i, j);
+                            if (cost > money || !cost) return;
                             if (textPreview) textPreview.destroy();
                             textPreview = game.add.text(j * 36 + 18, i * 36, cost ? "Upgrade (" + cost + ")" : 'Maxed out')
                                 .setFontSize(10)
@@ -147,8 +149,9 @@ function drawGrid(game) {
                                 .setResolution(1.5);
                         } else if (map[i][j] == 0) {
                             placeTower(i, j);
-                            if (imgPreview) imgPreview.destroy();
                             cost = calcUpgradeCost(i, j);
+                            if (cost > money || !cost) return;
+                            if (imgPreview) imgPreview.destroy();
                             textPreview = game.add.text(j * 36 + 18, i * 36, cost ? "Upgrade (" + cost + ")" : 'Maxed out')
                                 .setFontSize(10)
                                 .setBackgroundColor("#000")
@@ -170,7 +173,7 @@ var ENEMY_SPEED = 1 / 10000;
 
 var selectedCharacter = "mort1";
 
-var money = 1000;
+var money = 2500;
 
 var towerPlacements = [];
 
@@ -668,7 +671,7 @@ function create() {
     this.physics.add.overlap(enemies, bullets, damageEnemy);
     socket.emit("authenticate", "phaserGameKey****39");
 
-    const mort_text = this.add.text(452, 60, 'Mort (Cost: 100)', { fontFamily: 'sans-serif' });
+    const mort_text = this.add.text(452, 60, 'Mort (Cost: 500)', { fontFamily: 'sans-serif' });
     mort_text.setFontSize(10);
 
     const mort_character = this.add.sprite(452, 80, "mort1").setOrigin(0, 0);
@@ -704,7 +707,7 @@ function create() {
     //
 
 
-    const tower2_text = this.add.text(452, 165, 'Tower 2 (Cost: 250)', { fontFamily: 'sans-serif' });
+    const tower2_text = this.add.text(452, 165, 'Tower 2 (Cost: 1000)', { fontFamily: 'sans-serif' });
     tower2_text.setFontSize(10);
 
     const tower2_character = this.add.sprite(452, 185, "tower2").setOrigin(0, 0);
@@ -739,7 +742,7 @@ function create() {
 
     //
 
-    const bomb_text = this.add.text(452, 270, 'Bomb (Cost: 500)', { fontFamily: 'sans-serif' });
+    const bomb_text = this.add.text(452, 270, 'Bomb (Cost: 2500)', { fontFamily: 'sans-serif' });
     bomb_text.setFontSize(10);
 
     const bomb_character = this.add.sprite(456, 290, "bomb1").setOrigin(0, 0);
@@ -801,6 +804,7 @@ function create() {
     });
 
     socket.on("leaderboard", function(data) {
+        gameGoing = false;
         console.log(data)
         developLeaderboard(data);
     });
