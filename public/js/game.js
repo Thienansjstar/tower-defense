@@ -333,7 +333,7 @@ var towerTypes = [
 
 var enemySkin = "merd1";
 
-var hp = 100;
+var hp = 5000;
 
 var Enemy = new Phaser.Class({
     Extends: Phaser.GameObjects.Sprite,
