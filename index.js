@@ -136,7 +136,7 @@ io.on('connection', function (socket) {
     socket.on("request unlock", function() {
         if (io.gameBoard) {
             if (io.gameBoard.playing) {
-                socketB.emit("unlock game");
+                socket.emit("unlock game");
             }
         }
     });
