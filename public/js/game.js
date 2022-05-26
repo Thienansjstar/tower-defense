@@ -859,7 +859,7 @@ function create() {
     });
 
     socket.on("new player", function(their_name) {
-        document.getElementById('playerCount').innerText = playerCount++;
+        document.getElementById('playerCount').innerText = ++playerCount;
         const newEl = document.createElement("LI");
         newEl.innerText = their_name;
         document.getElementById('playerList').appendChild(newEl);
