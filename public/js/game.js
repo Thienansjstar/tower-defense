@@ -214,7 +214,7 @@ var towerTypes = [
                 "nextPrice": 2500,
                 "nextTower": "mort3",
                 "fireDistance": 100,
-                "fireSpeed": 1500,
+                "fireSpeed": 950,
                 "targets": 1,
                 "damageType": 0,
                 "damage": 40
@@ -239,7 +239,7 @@ var towerTypes = [
                 "price": 5000,
                 "nextPrice": null,
                 "fireDistance": 100,
-                "fireSpeed": 1500,
+                "fireSpeed": 850,
                 "targets": 1,
                 "damageType": 0,
                 "damage": 120
@@ -260,7 +260,7 @@ var towerTypes = [
                 "fireSpeed": 500,
                 "targets": 3,
                 "damageType": 0,
-                "damage": 10
+                "damage": 15
             },
             {
                 "level": 2,
@@ -285,7 +285,7 @@ var towerTypes = [
                 "fireSpeed": 500,
                 "targets": 3,
                 "damageType": 0,
-                "damage": 50
+                "damage": 60
             }
         ]
     },

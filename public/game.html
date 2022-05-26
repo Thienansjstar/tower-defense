@@ -818,9 +818,9 @@
                 </p>
                 <p class='subtitle'>Earn income by answering Calculus questions</p>
                 <p class='subtitle actions'>
-                    <button onclick="updateQuestion('easy')">Easy (~10s)</button><button
-                        onclick="updateQuestion('medium')">Medium (~30s)</button><button
-                        onclick="updateQuestion('hard')">Hard (~1-2min)</button>
+                    <button id="easyq_btn" onclick="updateQuestion('easy')">Easy (~10s)</button>
+                    <button id="mediumq_btn" onclick="updateQuestion('medium')">Medium (~30s)</button>
+                    <button id="hardq_btn" onclick="updateQuestion('hard')">Hard (~1-2min)</button>
                 </p>
                 <br>
                 <h2>Upgrades</h2>
@@ -970,6 +970,17 @@
             document.getElementById(btn).classList.add('disabled');
             cooldownTimer(document.getElementById(btn), cooldown / 1000);
             setTimeout(function () { document.getElementById(btn).classList.remove('disabled') }, cooldown);
+        });
+
+        socket.on("question cooldown", function (difficulty) {
+            document.getElementById(difficulty+"q_btn").disabled = true;
+            let tiempo = 5000;
+            if (difficulty == "easy") tiempo = 5000;
+            else if (difficulty == "medium") tiempo = 15000;
+            else if (difficulty == "hard") tiempo = 30000;
+            setTimeout(function() {
+                document.getElementById(difficulty+"q_btn").disabled = false;
+            }, tiempo);
         });
 
         function startGame() {

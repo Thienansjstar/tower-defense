@@ -891,15 +891,15 @@
         "incorrect": [
             {
                 "id": "answer_01",
-                "html": "tan(x)"
+                "html": "tan(9x)"
             },
             {
                 "id": "answer_02",
-                "html": "csc(x)"
+                "html": "csc(9x)"
             },
             {
                 "id": "answer_03",
-                "html": "cot(x)"
+                "html": "cot(9x)"
             }
         ],
         "correct": {
@@ -1112,9 +1112,35 @@
         ],
         "correct": {
             "id": "answer_04",
-            "html": "mean value theorem"
+            "html": "81x<sup>8</sup>"
         },
-        "difficulty": "81x",
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0044",
+            "html": "What is the velocity of a particle at t = 2, for x(t) = 3t + 1?"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "4"
+            },
+            {
+                "id": "answer_02",
+                "html": "0"
+            },
+            {
+                "id": "answer_03",
+                "html": "7"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "3"
+        },
+        "difficulty": "easy",
         "money": 100
     }
 ]

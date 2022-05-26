@@ -309,7 +309,10 @@ io.on('connection', function (socket) {
     socket.on("request question", function (difficulty) {
         if (!socket.canAnswer) return;
         const qList = socket.qs.filter(q => q.difficulty == difficulty);
-        if (qList.length == 0) return socket.emit("finished");
+        if (qList.length == 0) return socket.emit("game message", {
+            type: "error",
+            msg: "You answered all the questions in this difficulty!"
+        });
         let q = qList[Math.floor(Math.random() * qList.length)];
         let { task } = q;
         let choices = [...q.incorrect];
@@ -337,6 +340,9 @@ io.on('connection', function (socket) {
         socket.emit("money update", socket.money);
         socket.canAnswer = true;
         socket.qs = socket.qs.filter(qu => qu.task.id != match.task.id);
+        if (!accuracy) {
+            socket.emit("question cooldown", match.difficulty);
+        }
         return socket.emit("question score", money * socket.incomeLevel * socket.incomeBoost);
     });
 
