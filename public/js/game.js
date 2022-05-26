@@ -864,6 +864,16 @@ function create() {
         newEl.innerText = their_name;
         document.getElementById('playerList').appendChild(newEl);
     });
+
+    socket.on("player disconnect", function(their_name) {
+        for (const item of document.getElementById('playerList').getElementsByTagName("li")) {
+            if (item.innerText == their_name) {
+                item.remove();
+                document.getElementById('playerCount').innerText = --playerCount;
+                break;
+            }
+        }
+    });
 }
 
 var importantData, playerCount = 0, currIndex = -1;

@@ -82,6 +82,9 @@ io.on('connection', function (socket) {
         if (socket == io.gameBoard) {
             io.gameBoard = null;
         }
+        if (io.gameBoard) {
+            io.gameBoard.emit("player disconnect", socket.username);
+        }
         console.log('user disconnected');
     });
 
