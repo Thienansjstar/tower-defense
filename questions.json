@@ -152,8 +152,8 @@
             "id": "answer_04",
             "html": "f(x) = (x + 3) / (x<sup>2</sup> - 9)"
         },
-        "difficulty": "easy",
-        "money": 100
+        "difficulty": "medium",
+        "money": 500
     },
     {
         "task": {
@@ -620,10 +620,10 @@
             "id": "answer_04",
             "html": "81/2"
         },
-        "difficulty": "easy",
-        "money": 100
-    }
-    ,{
+        "difficulty": "medium",
+        "money": 250
+    },
+    {
         "task": {
             "id": "task_0025",
             "html": "Which of the following is the instantaneous rate of change of the function f(x) = 2x<sup>2</sup> with respect to x when x = 5?"
@@ -646,10 +646,10 @@
             "id": "answer_04",
             "html": "20"
         },
-        "difficulty": "easy",
-        "money": 100
-    }
-    ,{
+        "difficulty": "medium",
+        "money": 500
+    },
+    {
         "task": {
             "id": "task_0026",
             "html": "Which of the following is the second derivative of the function f(x) = 4x<sup>2</sup> - 12x"
@@ -674,8 +674,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0027",
             "html": "<img src='/aquetions/deriv1.png'/>"
@@ -700,8 +700,8 @@
         },
         "difficulty": "medium",
         "money": 500
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0028",
             "html": "<img src='/aquetions/deriv2.png'/>"
@@ -726,8 +726,8 @@
         },
         "difficulty": "medium",
         "money": 300
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0029",
             "html": "<img src='/aquetions/integ2.png'/>"
@@ -752,8 +752,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0030",
             "html": "<img src='/aquetions/integ3.png'/>"
@@ -778,8 +778,8 @@
         },
         "difficulty": "medium",
         "money": 500
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0031",
             "html": "<img src='/aquetions/integ4.png'/>"
@@ -804,8 +804,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0032",
             "html": "<img src='/aquetions/integ5.png'/>"
@@ -830,8 +830,8 @@
         },
         "difficulty": "medium",
         "money": 400
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0033",
             "html": "<img src='/aquetions/integ6.png'/>"
@@ -856,8 +856,8 @@
         },
         "difficulty": "medium",
         "money": 300
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0034",
             "html": "<img src='/aquetions/integ7.png'/>"
@@ -882,8 +882,8 @@
         },
         "difficulty": "medium",
         "money": 300
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0035",
             "html": "<img src='/aquetions/integ8.png'/>"
@@ -904,12 +904,12 @@
         ],
         "correct": {
             "id": "answer_04",
-            "html": "sec(x)"
+            "html": "sec(9x)"
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0036",
             "html": "<img src='/aquetions/integ9.png'/>"
@@ -934,8 +934,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0037",
             "html": "<img src='/aquetions/integ9.png'/>"
@@ -960,8 +960,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0038",
             "html": "what is the derivative of 9x<sup>20</sup> + 10x<sup>30</sup> "
@@ -986,8 +986,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0039",
             "html": "When is a function concave down?"
@@ -1012,8 +1012,8 @@
         },
         "difficulty": "easy",
         "money": 100
-    }
-    ,{
+    },
+    {
         "task": {
             "id": "task_0040",
             "html": "A particle is moving along a straight line. Its speed is inversely proportional to the square of the distance, S, it has traveled"
@@ -1038,12 +1038,83 @@
         },
         "difficulty": "easy",
         "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0041",
+            "html": "What is IVT"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "interesting value theorem"
+            },
+            {
+                "id": "answer_02",
+                "html": "GUCCI FLIP FLOPS"
+            },
+            {
+                "id": "answer_03",
+                "html": "interstate vested turbulance"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "intermediate value theorem"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0042",
+            "html": "what is MVT"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "most valuable treasure"
+            },
+            {
+                "id": "answer_02",
+                "html": "mean vested teachers"
+            },
+            {
+                "id": "answer_03",
+                "html": "mean value therem"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "mean value theorem"
+        },
+        "difficulty": "easy",
+        "money": 100
+    },
+    {
+        "task": {
+            "id": "task_0043",
+            "html": "what is the derivative of 9x<sup>9</sup>"
+        },
+        "incorrect": [
+            {
+                "id": "answer_01",
+                "html": "99x"
+            },
+            {
+                "id": "answer_02",
+                "html": "81"
+            },
+            {
+                "id": "answer_03",
+                "html": "81z"
+            }
+        ],
+        "correct": {
+            "id": "answer_04",
+            "html": "mean value theorem"
+        },
+        "difficulty": "81x",
+        "money": 100
     }
-
-
-
-
-
-    
-    
 ]

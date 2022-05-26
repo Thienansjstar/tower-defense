@@ -23,6 +23,7 @@ const store = require("./store.json");
 const crates = require("./crates.json");
 
 const { all } = require("proxy-addr");
+const { reset } = require('nodemon');
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -58,10 +59,9 @@ function makePurchase(socket, item) {
     }
 }
 
-io.on('connection', function (socket) {
-    console.log('a user connected');
-    socket.qs = questions;
-    socket.store = store;
+function resetData(socket) {
+    socket.qs = [...questions];
+    socket.store = Object.assign({}, store);
     socket.money = 0;
     socket.canAnswer = true;
     socket.purchases = [];
@@ -70,6 +70,13 @@ io.on('connection', function (socket) {
     socket.incomeBoost = 1;
     socket.crateLevel = 1;
     socket.totalMoney = 0;
+    socket.username = "";
+}
+
+
+io.on('connection', function (socket) {
+    console.log('a user connected');
+    resetData(socket);
 
     socket.on('disconnect', function () {
         if (socket == io.gameBoard) {
@@ -93,6 +100,13 @@ io.on('connection', function (socket) {
         }
     });
 
+    socket.on('restart', function () {
+        for (const [_, socketB] of io.of("/").sockets) {
+            resetData(socketB);
+            socketB.emit("restart");
+        }
+    });
+
     socket.on('end game', function (youWin) {
         if (socket == io.gameBoard) {
             let tempSockets = [];
@@ -105,15 +119,27 @@ io.on('connection', function (socket) {
                 username: s.username,
                 coins: s.totalMoney
             }));
+            const topQuestions = [...socket.qs].filter(s => s.attempts).sort((a, b) => a.corrects / a.attempts - b.corrects / b.attempts).slice(0, 10);
             socket.emit("leaderboard", tempSockets);
+            socket.emit("challenging", topQuestions);
         }
     });
 
     socket.on("authenticate", function (key) {
         if (key == "phaserGameKey****39" && !io.gameBoard) {
             io.gameBoard = socket;
+            socket.playing = false;
         }
     });
+
+    socket.on("start playing", function() {
+        if (socket == io.gameBoard) {
+            socket.playing = true;
+            for (const [_, socketB] of io.of("/").sockets) {
+                socketB.emit("unlock game");
+            }
+        }
+    })
 
     socket.on("game action", function ([action, cooldown, btn]) {
         if (!io.gameBoard) return socket.emit("game message", {
@@ -290,6 +316,13 @@ io.on('connection', function (socket) {
         if (!match) return socket.emit("question score", false);
         const accuracy = match.correct.id == choice;
         let money = accuracy ? match.money : 0;
+        if (io.gameBoard) {
+            const match2 = io.gameBoard.qs.find(q => q.task.id == task);
+            if (!match2.corrects) match2.corrects = 0;
+            if (!match2.attempts) match2.attempts = 0;
+            if (accuracy) match2.corrects++;
+            match2.attempts++;
+        }
         socket.money += money * socket.incomeLevel * socket.incomeBoost;
         socket.totalMoney += money * socket.incomeLevel * socket.incomeBoost;
         socket.emit("money update", socket.money);
@@ -298,7 +331,24 @@ io.on('connection', function (socket) {
         return socket.emit("question score", money * socket.incomeLevel * socket.incomeBoost);
     });
 
+    socket.on("waiting for camp", () => {
+        if (!io.gameBoard) return socket.emit("game message", {
+            type: "error",
+            msg: "Host is not connected!"
+        });
+        if (!io.gameBoard.playing) return socket.emit("game message", {
+            type: "error",
+            msg: "The game did not begin yet!"
+        });
+        socket.emit("camp verified");
+    });
+
     socket.on("username", username => {
+        if (!io.gameBoard) return socket.emit("game message", {
+            type: "error",
+            msg: "Host is not connected!"
+        });
         socket.username = username;
+        socket.emit("username received");
     });
 });

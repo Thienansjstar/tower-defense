@@ -668,8 +668,9 @@
             justify-content: center;
             font-size: 24px !important;
         }
-        
-        #crateScreen, #endScene {
+
+        #crateScreen,
+        #endScene {
             position: fixed;
             top: 0;
             left: 0;
@@ -697,14 +698,14 @@
             margin-left: -15vh;
             animation: slideUp 0.5s ease-in-out 1s forwards;
         }
-        
+
         #crateInfo {
             text-align: center;
             font-family: "Roboto Mono", sans-serif;
             padding: 6vh;
             color: white;
             font-size: 5vh;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             opacity: 0;
             position: relative;
             animation: fadeText 1s ease-in-out 0.8s forwards;
@@ -715,6 +716,7 @@
                 opacity: 0;
                 top: -50px;
             }
+
             to {
                 opacity: 1;
                 top: 0;
@@ -725,6 +727,7 @@
             from {
                 bottom: 30vh;
             }
+
             to {
                 bottom: 38vh;
             }
@@ -734,9 +737,15 @@
             from {
                 bottom: 25vh;
             }
+
             to {
                 bottom: 6vh;
             }
+        }
+        button[disabled] {
+            background-color: grey;
+            pointer-events: none;
+            opacity: 0.4;
         }
     </style>
 </head>
@@ -760,7 +769,7 @@
                 time is up, you win!</p>
             <p class='subtitle'><span style="background-color:#f44436;"><b>WARNING:</b> If you refresh the page, your
                     progress will be lost!</span></p>
-            <p class='subtitle'><button onclick="visitCamp()" class="begin"><b>I understand, let's start</b></button>
+            <p class='subtitle'><button disabled id='beginbutton' onclick="visitCamp()" class="begin"><b>Wait till host starts the game...</b></button>
             </p>
         </div>
         <div id="scene2">
@@ -924,8 +933,12 @@
             document.getElementById("coins").innerText = newVal;
         });
 
+        socket.on("restart", function () {
+            window.location.reload();
+        });
+
         socket.on("end game", function (youwin) {
-            document.getElementById("endScene").style.display="block";
+            document.getElementById("endScene").style.display = "block";
             document.getElementById("endMessage").innerText = youwin;
             gameOver = true;
         });
@@ -944,9 +957,9 @@
         socket.on("crate opened", function ({ name, texture }) {
             document.getElementById('crateInfo').innerText = name;
             document.getElementById('crateImage').src = texture;
-            document.getElementById('crateBreaking').src = "assets/crate_breaking.gif"+"?a="+Math.random();
+            document.getElementById('crateBreaking').src = "assets/crate_breaking.gif" + "?a=" + Math.random();
             document.getElementById('crateScreen').style.display = "block";
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('crateScreen').style.display = "none";
             }, 5000);
             crateCount--;
@@ -962,8 +975,6 @@
         function startGame() {
             const username = document.getElementById("username").value || "testing";
             if (!username) return alert("Please enter in a name first!");
-            var modal = document.getElementById('id01');
-            modal.style.display = "none";
             socket.emit("username", username);
             const nameContainers = document.getElementsByClassName("username");
             for (const nameContainer of nameContainers) {
@@ -971,10 +982,24 @@
             }
         }
 
+        socket.on("username received", function() {
+            var modal = document.getElementById('id01');
+            modal.style.display = "none";
+        });
+
         function visitCamp() {
+            socket.emit("waiting for camp");
+        }
+
+        socket.on("unlock game", function() {
+            document.getElementById('beginbutton').disabled = false;
+            document.getElementById('beginbutton').innerText = "I understand, let's start";
+        });
+
+        socket.on("camp verified", function() {
             document.getElementById('scene1').style.display = 'none';
             document.getElementById('scene2').style.display = 'block';
-        }
+        });
 
         function enterTent() {
             document.getElementById('scene2').style.display = 'none';

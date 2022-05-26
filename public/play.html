@@ -93,6 +93,18 @@
             }
         }
 
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #212121;
+            z-index: 999;
+            padding: 50px;
+            overflow: auto;
+        }
+
         #endScreen {
             position: fixed;
             top: 0;
@@ -297,10 +309,11 @@
 
         .c-button {
             display: inline-block;
+            font-size: 28px !important;
             background: var(--dark);
             border: 0;
             border-radius: 0.4rem;
-            padding: 1.2rem 2rem;
+            padding: 0.5rem 1.5rem;
             transition: all 120ms ease-out 0s;
         }
 
@@ -715,10 +728,20 @@
         .img {
             size: .1%;
         }
+
+        #mostMissed {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
+    <div id="startScreen">
+        <h1 style="font-size:48px;">Welcome!<button style='float:right;' class='c-button c-button--orange' onclick="beginGame()">Start</button></h1>
+        <h2>Use this link to join:</h2>
+        <p style='color:yellow;font-size:60px;'>https://calcurush.herokuapp.com/</p>
+        <p style='font-size:28px;'>We will start in 30 seconds. You can still join and play after we start.</p>
+    </div>
     <div id="freezeScreen"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.23.0/phaser-arcade-physics.min.js"></script>
     <script src="js/game.js"></script>
@@ -726,17 +749,41 @@
         integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
         crossorigin="anonymous"></script>
     <div id="endScreen">
-        <h2>Leaderboard</h2>
-        <div class="c-card__body">
-            <ul class="c-list" id="list">
-                <li class="c-list__item">
-                    <div class="c-list__grid">
-                        <div class="u-text--left u-text--small u-text--medium">Rank</div>
-                        <div class="u-text--left u-text--small u-text--medium">Username</div>
-                        <div class="u-text--right u-text--small u-text--medium">Total Money</div>
-                    </div>
-                </li>
-            </ul>
+        <div id="leaderboard">
+            <h2>Leaderboard <button style='float:right;' class='c-button c-button--orange'
+                    onclick="mostMissed()">Next</button></h2>
+            <div class="c-card__body">
+                <ul class="c-list" id="list">
+                    <li class="c-list__item">
+                        <div class="c-list__grid">
+                            <div class="u-text--left u-text--small u-text--medium">Rank</div>
+                            <div class="u-text--left u-text--small u-text--medium">Username</div>
+                            <div class="u-text--right u-text--small u-text--medium">Total Money</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="mostMissed">
+            <h2>Challenging Questions <button style='float:right;margin-left:20px;' class='c-button c-button--orange'
+                    onclick="restartGame()">Restart</button><button style='float:right;margin-left:20px;'
+                    class='c-button c-button--orange' onclick="mostMissed2('+')">Next</button><button
+                    style='float:right;' class='c-button c-button--orange' onclick="mostMissed2('-')">Previous</button>
+            </h2>
+            <br>
+            <p><b>Accuracy:</b> <span id='corrects'>0</span> of <span id='attempts'>0</span> students got this right.
+            </p>
+            <p><b>Difficulty:</b> <span id='difficulty'>---</span></p>
+            <br>
+            <p style='font-family:Cambria;font-size:28px;' id='challenge_problem'></p>
+            <br>
+            <h3>Correct Choice</h3>
+            <p style='font-family:Cambria;font-size:28px;' id='challenge_ans1'></p>
+            <br>
+            <h3>Incorrect Choices</h3>
+            <p style='font-family:Cambria;font-size:28px;' id='challenge_ans2'></p>
+            <p style='font-family:Cambria;font-size:28px;' id='challenge_ans3'></p>
+            <p style='font-family:Cambria;font-size:28px;' id='challenge_ans4'></p>
         </div>
     </div>
     <script>

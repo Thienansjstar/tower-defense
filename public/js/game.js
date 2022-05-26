@@ -657,6 +657,7 @@ function preload() {
 function sabotageRandomTower() {
     const towerUnits = towers.getChildren();
     const randomTower = towerUnits[Math.floor(Math.random() * towerUnits.length)];
+    if (!randomTower) return;
     randomTower.annihilate();
 }
 
@@ -852,6 +853,38 @@ function create() {
             list.appendChild(newRow);
         });
     }
+
+    socket.on("challenging", function(data) {
+        importantData = data;
+    });
+}
+
+var importantData, currIndex = -1;
+
+function mostMissed() {
+    document.getElementById('leaderboard').style.display="none";
+    document.getElementById('mostMissed').style.display="block";
+    mostMissed2("+");
+}
+function mostMissed2(dirr) {
+    if (dirr == "+") currIndex++;
+    else currIndex--;
+    if (currIndex >= importantData.length) currIndex = importantData.length - 1;
+    else if (currIndex < 0) currIndex = 0;
+    const currProblem = importantData[currIndex];
+    document.getElementById("corrects").innerText = currProblem.corrects;
+    document.getElementById("attempts").innerText = currProblem.attempts;
+    document.getElementById("difficulty").innerText = currProblem.difficulty.toUpperCase();
+    document.getElementById("challenge_problem").innerHTML = currProblem.task.html;
+    document.getElementById("challenge_ans1").innerHTML = currProblem.correct.html;
+    document.getElementById("challenge_ans2").innerHTML = currProblem.incorrect[0].html;
+    document.getElementById("challenge_ans3").innerHTML = currProblem.incorrect[1].html;
+    document.getElementById("challenge_ans4").innerHTML = currProblem.incorrect[2].html;
+}
+
+function restartGame() {
+    socket.emit("restart");
+    window.location.reload();
 }
 
 var moneyTic = 5000, spawnTic = 0;
@@ -859,12 +892,18 @@ var moneyTic = 5000, spawnTic = 0;
 var minB = 2500;
 var maxB = 5000;
 
-var gameGoing = true;
+var gameGoing = false;
+
+function beginGame() {
+    document.getElementById('startScreen').style.display="none";
+    gameGoing = true;
+    socket.emit('start playing');
+}
 
 function update(time, delta) {
     this.coinText.setText("Coins: " + money + ", HP: " + hp);
     
-    if (time > moneyTic) {
+    if (time > moneyTic && gameGoing) {
         money += 50;
         moneyTic = time + 5000;
         maxB = Math.round(maxB * 0.9);
@@ -873,7 +912,7 @@ function update(time, delta) {
         if (maxB < 1100) maxB = 1100;
     }
 
-    if (time > spawnTic) {
+    if (time > spawnTic && gameGoing) {
         spawnEnemy(1, 100, null);
         spawnTic = time + Math.floor(Math.random() * (maxB - minB + 1) + minB);
     }
