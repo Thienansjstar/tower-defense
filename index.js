@@ -81,6 +81,10 @@ io.on('connection', function (socket) {
     socket.on('disconnect', function () {
         if (socket == io.gameBoard) {
             io.gameBoard = null;
+            for (const [_, socketB] of io.of("/").sockets) {
+                resetData(socketB);
+                socketB.emit("restart");
+            }
         }
         if (io.gameBoard) {
             io.gameBoard.emit("player disconnect", socket.username);
