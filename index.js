@@ -9,7 +9,7 @@ const DatauriParser = require("datauri/parser");
 const { Socket } = require('engine.io');
 
 
-const myServer = server.listen(process.env.PORT || 3000, function () {
+const myServer = server.listen(process.env.PORT || 6, function () {
     console.log(`Listening on ${server.address().port}`);
 });;
 
@@ -69,6 +69,7 @@ io.on('connection', function (socket) {
     socket.incomeLevel = 1;
     socket.incomeBoost = 1;
     socket.crateLevel = 1;
+    socket.totalMoney = 0;
 
     socket.on('disconnect', function () {
         if (socket == io.gameBoard) {
@@ -77,12 +78,13 @@ io.on('connection', function (socket) {
         console.log('user disconnected');
     });
 
-    socket.on('enemy reached', function ({id, hpRatio}) {
+    socket.on('enemy reached', function ({ id, hpRatio }) {
         if (socket == io.gameBoard) {
             const socketAchieved = io.sockets.sockets.get(id);
             if (!socketAchieved) return;
             const earned = Math.round(hpRatio * 1000) * socketAchieved.incomeLevel * socketAchieved.incomeBoost;
             socketAchieved.money += earned;
+            socketAchieved.totalMoney += earned;
             socketAchieved.emit("game message", {
                 type: "positive",
                 msg: "You earned " + earned + " coins since one of your balloons reached the fort!"
@@ -91,7 +93,23 @@ io.on('connection', function (socket) {
         }
     });
 
-    socket.on("authenticate", function(key) {
+    socket.on('end game', function (youWin) {
+        if (socket == io.gameBoard) {
+            let tempSockets = [];
+            for (const [_, socketB] of io.of("/").sockets) {
+                if (!socketB.username) continue;
+                socketB.emit("end game", youWin ? "You defeated the enemies!" : "Unfortunately, you weren't able to defeat the enemies!");
+                tempSockets.push(socketB);
+            }
+            tempSockets = tempSockets.sort((a, b) => b.totalMoney - a.totalMoney).map(s => ({
+                username: s.username,
+                coins: s.totalMoney
+            }));
+            socket.emit("leaderboard", tempSockets);
+        }
+    });
+
+    socket.on("authenticate", function (key) {
         if (key == "phaserGameKey****39" && !io.gameBoard) {
             io.gameBoard = socket;
         }
@@ -124,12 +142,15 @@ io.on('connection', function (socket) {
                 type: "error",
                 msg: "You do not have enough money!"
             });
-            socket.emit("cooldown", [cooldown, btn]);
             io.gameBoard.emit("sabotage");
-            socket.emit("game message", {
-                type: "positive",
-                msg: "A tower was successfully sabotaged!"
-            });
+            for (const [_, socketB] of io.of("/").sockets) {
+                if (!socketB.username) continue;
+                socketB.emit("cooldown", [cooldown, btn]);
+                socketB.emit("game message", {
+                    type: "positive",
+                    msg: `A tower was sabotaged by ${socket.username}!`
+                });
+            }
         } else if (action == "freeze") {
             const attempt = makePurchase(socket, socket.store["Freeze Screen"]);
             if (!attempt) return socket.emit("game message", {
@@ -138,6 +159,7 @@ io.on('connection', function (socket) {
             });
             io.gameBoard.emit("freeze");
             for (const [_, socketB] of io.of("/").sockets) {
+                if (!socketB.username) continue;
                 socketB.emit("cooldown", [cooldown, btn]);
                 socketB.emit("game message", {
                     type: "positive",
@@ -145,7 +167,7 @@ io.on('connection', function (socket) {
                 });
             }
         } else if (action == "open crate") {
-            const crateTypes = [...crates].map(crate => [crate.name, crate.chances[socket.crateLevel-1]]);
+            const crateTypes = [...crates].map(crate => [crate.name, crate.chances[socket.crateLevel - 1]]);
             const guess = Math.random() * 100;
             let count = 0, selected;
             for (const crateType of crateTypes) {
@@ -162,7 +184,7 @@ io.on('connection', function (socket) {
                 const guess = Math.random() * 100;
                 let count = 0, selected;
                 for (const crateType of crateTypes) {
-                    count += crateType.chances[socket.crateLevel-1];
+                    count += crateType.chances[socket.crateLevel - 1];
                     if (guess < count) {
                         selected = crateType;
                         break;
@@ -170,13 +192,16 @@ io.on('connection', function (socket) {
                 }
                 if (match.name == "Free Money") {
                     socket.money += selected.amount;
+                    socket.totalMoney += selected.amount;
                     socket.emit("money update", socket.money);
-                    selected.name = "Free Money ("+selected.amount+" coins)";
+                    selected.name = "Free Money (" + selected.amount + " coins)";
                 } else if (match.name == "Income Multiplier") {
                     socket.incomeBoost *= selected.magnitude;
-                    selected.name = selected.time+"s Income Multiplier (x"+selected.magnitude+")";
-                    setTimeout(function() {
-                        socket.incomeBoost /= selected.magnitude;
+                    selected.name = selected.time + "s Income Multiplier (x" + selected.magnitude + ")";
+                    let newVal = selected.magnitude;
+                    setTimeout(function () {
+                        console.log('disabled multiplier')
+                        socket.incomeBoost /= newVal;
                     }, selected.time * 1000);
                 }
                 socket.emit("crate opened", {
@@ -190,6 +215,7 @@ io.on('connection', function (socket) {
                     io.gameBoard.emit("freeze");
                 } else if (match.name == "Millionaire") {
                     socket.money += 1000000;
+                    socket.totalMoney += 1000000;
                     socket.emit("money update", socket.money);
                 }
                 socket.emit("crate opened", match);
@@ -265,6 +291,7 @@ io.on('connection', function (socket) {
         const accuracy = match.correct.id == choice;
         let money = accuracy ? match.money : 0;
         socket.money += money * socket.incomeLevel * socket.incomeBoost;
+        socket.totalMoney += money * socket.incomeLevel * socket.incomeBoost;
         socket.emit("money update", socket.money);
         socket.canAnswer = true;
         socket.qs = socket.qs.filter(qu => qu.task.id != match.task.id);

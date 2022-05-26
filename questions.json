@@ -787,7 +787,7 @@
         "incorrect": [
             {
                 "id": "answer_01",
-                "html": "(1/5)sinx + C"
+                "html": "-(1/5)sinx + C"
             },
             {
                 "id": "answer_02",
@@ -800,7 +800,7 @@
         ],
         "correct": {
             "id": "answer_04",
-            "html": "-(1/5)sin5x + C"
+            "html": "(1/5)sin5x + C"
         },
         "difficulty": "easy",
         "money": 100
@@ -808,32 +808,6 @@
     ,{
         "task": {
             "id": "task_0032",
-            "html": "<img src='/aquetions/integ4.png'/>"
-        },
-        "incorrect": [
-            {
-                "id": "answer_01",
-                "html": "(1/5)sinx + C"
-            },
-            {
-                "id": "answer_02",
-                "html": "-sin5x + C"
-            },
-            {
-                "id": "answer_03",
-                "html": "sin5x + C"
-            }
-        ],
-        "correct": {
-            "id": "answer_04",
-            "html": "-(1/5)sin5x + C"
-        },
-        "difficulty": "easy",
-        "money": 50
-    }
-    ,{
-        "task": {
-            "id": "task_0033",
             "html": "<img src='/aquetions/integ5.png'/>"
         },
         "incorrect": [
@@ -859,7 +833,7 @@
     }
     ,{
         "task": {
-            "id": "task_0034",
+            "id": "task_0033",
             "html": "<img src='/aquetions/integ6.png'/>"
         },
         "incorrect": [
@@ -885,7 +859,7 @@
     }
     ,{
         "task": {
-            "id": "task_0035",
+            "id": "task_0034",
             "html": "<img src='/aquetions/integ7.png'/>"
         },
         "incorrect": [

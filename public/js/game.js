@@ -170,7 +170,7 @@ var ENEMY_SPEED = 1 / 10000;
 
 var selectedCharacter = "mort1";
 
-var money = 50000;
+var money = 1000;
 
 var towerPlacements = [];
 
@@ -195,7 +195,7 @@ var towerTypes = [
                 "sprite": "mort1",
                 "frames": 3,
                 "price": 100,
-                "nextPrice": 250,
+                "nextPrice": 500,
                 "nextTower": "mort2",
                 "fireDistance": 100,
                 "fireSpeed": 1000,
@@ -207,39 +207,39 @@ var towerTypes = [
                 "level": 2,
                 "sprite": "mort2",
                 "frames": 6,
-                "price": 250,
-                "nextPrice": 500,
+                "price": 500,
+                "nextPrice": 2500,
                 "nextTower": "mort3",
                 "fireDistance": 100,
-                "fireSpeed": 1000,
+                "fireSpeed": 1500,
                 "targets": 1,
                 "damageType": 0,
-                "damage": 50
+                "damage": 40
             },
             {
                 "level": 3,
                 "sprite": "mort3",
                 "frames": 3,
-                "price": 500,
-                "nextPrice": 1000,
+                "price": 2500,
+                "nextPrice": 5000,
                 "nextTower": "mort4",
                 "fireDistance": 100,
                 "fireSpeed": 900,
                 "targets": 1,
                 "damageType": 0,
-                "damage": 100
+                "damage": 80
             },
             {
                 "level": 4,
                 "sprite": "mort4",
                 "frames": 4,
-                "price": 1000,
+                "price": 5000,
                 "nextPrice": null,
                 "fireDistance": 100,
-                "fireSpeed": 800,
+                "fireSpeed": 1500,
                 "targets": 1,
                 "damageType": 0,
-                "damage": 250
+                "damage": 120
             }
         ]
     },
@@ -251,38 +251,38 @@ var towerTypes = [
                 "sprite": "tower2",
                 "frames": 4,
                 "price": 250,
-                "nextPrice": 1000,
+                "nextPrice": 2500,
                 "nextTower": "tower3",
                 "fireDistance": 125,
-                "fireSpeed": 750,
+                "fireSpeed": 500,
                 "targets": 3,
                 "damageType": 0,
-                "damage": 20
+                "damage": 10
             },
             {
                 "level": 2,
                 "sprite": "tower3",
                 "frames": 3,
-                "price": 1000,
-                "nextPrice": 5000,
+                "price": 2500,
+                "nextPrice": 10000,
                 "nextTower": "tower4",
                 "fireDistance": 250,
-                "fireSpeed": 500,
+                "fireSpeed": 750,
                 "targets": 3,
                 "damageType": 0,
-                "damage": 40
+                "damage": 30
             },
             {
                 "level": 3,
                 "sprite": "tower4",
                 "frames": 4,
-                "price": 5000,
+                "price": 10000,
                 "nextPrice": null,
                 "fireDistance": 500,
-                "fireSpeed": 250,
+                "fireSpeed": 500,
                 "targets": 3,
                 "damageType": 0,
-                "damage": 60
+                "damage": 50
             }
         ]
     },
@@ -296,8 +296,8 @@ var towerTypes = [
                 "price": 500,
                 "nextPrice": 2500,
                 "nextTower": "bomb2",
-                "fireDistance": 50,
-                "fireSpeed": 2500,
+                "fireDistance": 500,
+                "fireSpeed": 5000,
                 "targets": 1,
                 "damageType": 1,
                 "damage": 100
@@ -307,10 +307,10 @@ var towerTypes = [
                 "sprite": "bomb2",
                 "frames": 3,
                 "price": 2500,
-                "nextPrice": 10000,
+                "nextPrice": 25000,
                 "nextTower": "bomb3",
-                "fireDistance": 50,
-                "fireSpeed": 2000,
+                "fireDistance": 500,
+                "fireSpeed": 2500,
                 "targets": 1,
                 "damageType": 1,
                 "damage": 250
@@ -319,19 +319,21 @@ var towerTypes = [
                 "level": 3,
                 "sprite": "bomb3",
                 "frames": 4,
-                "price": 10000,
+                "price": 25000,
                 "nextPrice": null,
-                "fireDistance": 50,
+                "fireDistance": 500,
                 "fireSpeed": 1500,
                 "targets": 1,
                 "damageType": 1,
-                "damage": 500
+                "damage": 250
             }
         ]
     }
 ]
 
 var enemySkin = "merd1";
+
+var hp = 5000;
 
 var Enemy = new Phaser.Class({
     Extends: Phaser.GameObjects.Sprite,
@@ -373,7 +375,7 @@ var Enemy = new Phaser.Class({
 
         // if hp drops below 0 we deactivate this enemy
         if (this.hp <= 0) {
-            money += 50;
+            money += this.maxHp;
             this.destroy();
         }
     },
@@ -399,6 +401,7 @@ var Enemy = new Phaser.Class({
         // if we have reached the end of the path, remove the enemy
         if (this.follower.t >= 1) {
             socket.emit("enemy reached", { id: this.id, hpRatio: this.hp / this.maxHp });
+            hp -= this.hp;
             this.destroy();
         }
     }
@@ -585,7 +588,7 @@ function getEnemy(x, y, distance) {
     var enemyUnits = enemies.getChildren();
     let indexWithMaxDistance = 0;
     let maxDistanceRecorded = 0;
-    for (var i = 0; i < enemyUnits.length; i++) {
+    for (var i = enemyUnits.length - 1; i >= 0; i--) {
         if (enemyUnits[i].active) {
             const dist = Phaser.Math.Distance.Between(x, y, enemyUnits[i].x, enemyUnits[i].y);
             if (dist > maxDistanceRecorded && dist <= distance) {
@@ -736,7 +739,6 @@ function create() {
 
     //
 
-
     const bomb_text = this.add.text(452, 270, 'Bomb (Cost: 500)', { fontFamily: 'sans-serif' });
     bomb_text.setFontSize(10);
 
@@ -788,17 +790,90 @@ function create() {
         }, 5000);
     });
 
-    this.coinText = this.add.text(450, 15, "Coins: ").setFontSize(14);
+    this.coinText = this.add.text(450, 15, "Coins: ").setFontSize(12);
+
+    const endGame = this.add.text(570, 340, "END GAME").setFontSize(12);
+    endGame.setInteractive();
+
+    endGame.on("pointerdown", () => {
+        socket.emit("end game", false);
+        document.getElementById('endScreen').style.display="block";
+    });
+
+    socket.on("leaderboard", function(data) {
+        console.log(data)
+        developLeaderboard(data);
+    });
+    
+    function developLeaderboard(data) {
+        const randomEmoji = () => {
+            const emojis = ['👏', '👍', '🙌', '🤩', '🔥', '⭐️', '🏆', '💯', '😏'];
+            let randomNumber = Math.floor(Math.random() * emojis.length);
+            return emojis[randomNumber];
+        };
+    
+        data.forEach((member, i) => {
+            let newRow = document.createElement('li');
+            newRow.classList = 'c-list__item';
+            newRow.innerHTML = `
+    <div class="c-list__grid">
+        <div class="c-flag c-place u-bg--transparent">${i+1}</div>
+        <div class="c-media">
+            
+            <div class="c-media__content">
+                <div class="c-media__title">${member.username}</div>
+            
+            </div>
+        </div>
+        <div class="u-text--right c-kudos">
+            <div class="u-mt--8">
+                <strong>${member.coins}</strong> ${randomEmoji()}
+            </div>
+        </div>
+    </div>
+    `;
+            if (i === 0) {
+                newRow.querySelector('.c-place').classList.add('u-text--dark');
+                newRow.querySelector('.c-place').classList.add('u-bg--yellow');
+                newRow.querySelector('.c-kudos').classList.add('u-text--yellow');
+            } else if (i === 1) {
+                newRow.querySelector('.c-place').classList.add('u-text--dark');
+                newRow.querySelector('.c-place').classList.add('u-bg--teal');
+                newRow.querySelector('.c-kudos').classList.add('u-text--teal');
+            } else if (i === 2) {
+                newRow.querySelector('.c-place').classList.add('u-text--dark');
+                newRow.querySelector('.c-place').classList.add('u-bg--orange');
+                newRow.querySelector('.c-kudos').classList.add('u-text--orange');
+            }
+            list.appendChild(newRow);
+        });
+    }
 }
 
-var spawnTic = 0;
+var moneyTic = 5000, spawnTic = 0;
+
+var minB = 2500;
+var maxB = 5000;
 
 function update(time, delta) {
-    this.coinText.setText("Coins: " + money);
-    /*
-    if (time > spawnTic) {
-        spawnEnemy();
-        spawnTic = time + Math.floor(Math.random() * (2000 - 1000 + 1) + 1000);
+    this.coinText.setText("Coins: " + money + ", HP: " + hp);
+    
+    if (time > moneyTic) {
+        money += 50;
+        moneyTic = time + 5000;
+        maxB = Math.round(maxB * 0.9);
+        minB = Math.round(maxB * 0.7);
+        if (minB < 900) minB = 900;
+        if (maxB < 1100) maxB = 1100;
     }
-    */
+
+    if (time > spawnTic) {
+        spawnEnemy(1, 100, null);
+        spawnTic = time + Math.floor(Math.random() * (maxB - minB + 1) + minB);
+    }
+
+    if (hp <= 0) {
+        socket.emit("end game", true);
+        document.getElementById('endScreen').style.display="block";
+    }
 }

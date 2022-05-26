@@ -497,7 +497,7 @@
         }
 
         .animatedBalloon {
-            position: absolute;
+            position: fixed;
             z-index: -2;
             bottom: 12vw;
             animation: balloonGo 5s linear;
@@ -668,7 +668,7 @@
             font-size: 24px !important;
         }
         
-        #crateScreen {
+        #crateScreen, #endScene {
             position: fixed;
             top: 0;
             left: 0;
@@ -832,7 +832,7 @@
                     <button id="btn_crate" class='bigbutton' onclick="gameAction('buy luck', 3000, this)">
                         <div class='contents'>
                             <img style="padding:14px;" src="assets/crate.gif" />
-                            <span class="label">Crate Luck<br>(<label id="crate_price">100</label>🪙)</span>
+                            <span class="label">Crate Luck<br>(<label id="crate_price">1000</label>🪙)</span>
                             <span class="small_label">Current Level: <label id="crate_level">1</label></span>
                         </div>
                     </button>
@@ -880,6 +880,10 @@
         <img src="assets/muney1.png" id="crateImage" />
         <img src="assets/crate_breaking.gif" id="crateBreaking" />
     </div>
+    <div id="endScene">
+        <h1>Game over!</h1>
+        <p class='subtitle' id="endMessage"></p>
+    </div>
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
         integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
         crossorigin="anonymous"></script>
@@ -917,6 +921,11 @@
 
         socket.on("money update", function (newVal) {
             document.getElementById("coins").innerText = newVal;
+        });
+
+        socket.on("end game", function (youwin) {
+            document.getElementById("endScene").style.display="block";
+            document.getElementById("endMessage").innerText = youwin;
         });
 
         socket.on("level update", function ({ type, level, price }) {
