@@ -109,6 +109,7 @@ io.on('connection', function (socket) {
 
     socket.on('end game', function (youWin) {
         if (socket == io.gameBoard) {
+            socket.playing = false;
             let tempSockets = [];
             for (const [_, socketB] of io.of("/").sockets) {
                 if (!socketB.username) continue;
@@ -129,6 +130,14 @@ io.on('connection', function (socket) {
         if (key == "phaserGameKey****39" && !io.gameBoard) {
             io.gameBoard = socket;
             socket.playing = false;
+        }
+    });
+
+    socket.on("request unlock", function() {
+        if (io.gameBoard) {
+            if (io.gameBoard.playing) {
+                socketB.emit("unlock game");
+            }
         }
     });
 

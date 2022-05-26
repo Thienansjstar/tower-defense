@@ -872,6 +872,7 @@ function mostMissed2(dirr) {
     if (currIndex >= importantData.length) currIndex = importantData.length - 1;
     else if (currIndex < 0) currIndex = 0;
     const currProblem = importantData[currIndex];
+    if (!currProblem) return;
     document.getElementById("corrects").innerText = currProblem.corrects;
     document.getElementById("attempts").innerText = currProblem.attempts;
     document.getElementById("difficulty").innerText = currProblem.difficulty.toUpperCase();

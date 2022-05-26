@@ -980,11 +980,13 @@
             for (const nameContainer of nameContainers) {
                 nameContainer.innerText = username;
             }
+            socket.emit("request unlock");
         }
 
         socket.on("username received", function() {
             var modal = document.getElementById('id01');
             modal.style.display = "none";
+            socket.emit("request unlock");
         });
 
         function visitCamp() {
