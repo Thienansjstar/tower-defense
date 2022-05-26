@@ -893,12 +893,12 @@
         var balloonTimer;
 
         function updateQuestion(difficulty) {
-            document.getElementById("quiz_board").style.display = "block";
             socket.emit("request question", difficulty);
             clearInterval(balloonTimer);
         }
 
         socket.on("send question", function (question) {
+            document.getElementById("quiz_board").style.display = "block";
             document.getElementById("question").innerHTML = question.task.html;
             const choices = document.getElementsByClassName("choice");
             for (let i = 0; i < 4; i++) {
