@@ -926,6 +926,7 @@
         socket.on("end game", function (youwin) {
             document.getElementById("endScene").style.display="block";
             document.getElementById("endMessage").innerText = youwin;
+            gameOver = true;
         });
 
         socket.on("level update", function ({ type, level, price }) {
@@ -935,6 +936,7 @@
         });
 
         socket.on("game message", function ({ type, msg }) {
+            if (gameOver) return;
             openSnackbar(type, msg);
         });
 
@@ -1001,7 +1003,7 @@
             setTimeout(function () { sb.remove(); }, 5000);
         }
 
-        var crateCount = 0;
+        var crateCount = 0, gameOver = false;
 
         function openCrate(btn) {
             if (crateCount > 0) {

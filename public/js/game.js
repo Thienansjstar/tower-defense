@@ -194,8 +194,8 @@ var towerTypes = [
                 "level": 1,
                 "sprite": "mort1",
                 "frames": 3,
-                "price": 100,
-                "nextPrice": 500,
+                "price": 500,
+                "nextPrice": 1000,
                 "nextTower": "mort2",
                 "fireDistance": 100,
                 "fireSpeed": 1000,
@@ -207,7 +207,7 @@ var towerTypes = [
                 "level": 2,
                 "sprite": "mort2",
                 "frames": 6,
-                "price": 500,
+                "price": 1000,
                 "nextPrice": 2500,
                 "nextTower": "mort3",
                 "fireDistance": 100,
@@ -250,7 +250,7 @@ var towerTypes = [
                 "level": 1,
                 "sprite": "tower2",
                 "frames": 4,
-                "price": 250,
+                "price": 1000,
                 "nextPrice": 2500,
                 "nextTower": "tower3",
                 "fireDistance": 125,
@@ -293,8 +293,8 @@ var towerTypes = [
                 "level": 1,
                 "sprite": "bomb1",
                 "frames": 3,
-                "price": 500,
-                "nextPrice": 2500,
+                "price": 2500,
+                "nextPrice": 5000,
                 "nextTower": "bomb2",
                 "fireDistance": 500,
                 "fireSpeed": 5000,
@@ -306,7 +306,7 @@ var towerTypes = [
                 "level": 2,
                 "sprite": "bomb2",
                 "frames": 3,
-                "price": 2500,
+                "price": 5000,
                 "nextPrice": 25000,
                 "nextTower": "bomb3",
                 "fireDistance": 500,
@@ -333,7 +333,7 @@ var towerTypes = [
 
 var enemySkin = "merd1";
 
-var hp = 5000;
+var hp = 100;
 
 var Enemy = new Phaser.Class({
     Extends: Phaser.GameObjects.Sprite,
@@ -375,7 +375,7 @@ var Enemy = new Phaser.Class({
 
         // if hp drops below 0 we deactivate this enemy
         if (this.hp <= 0) {
-            money += this.maxHp;
+            money += Math.round(this.maxHp / 5) * 2;
             this.destroy();
         }
     },
@@ -855,6 +855,8 @@ var moneyTic = 5000, spawnTic = 0;
 var minB = 2500;
 var maxB = 5000;
 
+var gameGoing = true;
+
 function update(time, delta) {
     this.coinText.setText("Coins: " + money + ", HP: " + hp);
     
@@ -872,8 +874,9 @@ function update(time, delta) {
         spawnTic = time + Math.floor(Math.random() * (maxB - minB + 1) + minB);
     }
 
-    if (hp <= 0) {
+    if (gameGoing && hp <= 0) {
         socket.emit("end game", true);
         document.getElementById('endScreen').style.display="block";
+        gameGoing = false;
     }
 }
