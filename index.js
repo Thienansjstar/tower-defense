@@ -130,9 +130,12 @@ io.on('connection', function (socket) {
     });
 
     socket.on("authenticate", function (key) {
-        if (key == "phaserGameKey****39" && !io.gameBoard) {
+        if (key == "CalcProj22" && !io.gameBoard) {
             io.gameBoard = socket;
             socket.playing = false;
+            socket.emit("auth approve", true);
+        } else {
+            socket.emit("auth approve", false);
         }
     });
 

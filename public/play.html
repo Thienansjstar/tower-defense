@@ -93,6 +93,18 @@
             }
         }
 
+        #authScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #212121;
+            z-index: 9999;
+            padding: 50px;
+            overflow: auto;
+        }
+
         #startScreen {
             position: fixed;
             top: 0;
@@ -305,6 +317,20 @@
         .c-avatar--lg {
             width: 9.6rem;
             height: 9.6rem;
+        }
+
+        .c-input {
+            display: inline-block;
+            font-size: 28px !important;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 0.4rem;
+            padding: 0.5rem 1.5rem;
+            transition: all 120ms ease-out 0s;
+            background-color: transparent;
+        }
+
+        .c-input:focus {
+            border-color: orange;
         }
 
         .c-button {
@@ -736,6 +762,13 @@
 </head>
 
 <body>
+    <div id="authScreen">
+        <h1>Enter in password:</h1>
+        <form action="javascript:checkPassword();void 0;">
+            <input type="password" class="c-input" id="pw_container" name="psw" required>
+            <button class='c-button c-button--orange' type="submit" class="button a"><b>SUBMIT</b></button>
+        </form>
+    </div>
     <div id="startScreen">
         <h1 style="font-size:48px;">Welcome!<button style='float:right;' class='c-button c-button--orange' onclick="beginGame()">Start</button></h1>
         <h2>Use this link to join:</h2>

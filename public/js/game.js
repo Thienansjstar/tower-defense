@@ -670,7 +670,6 @@ function create() {
     towers = this.add.group({ classType: Tower, runChildUpdate: true });
     bullets = this.physics.add.group({ classType: Bullet, runChildUpdate: true });
     this.physics.add.overlap(enemies, bullets, damageEnemy);
-    socket.emit("authenticate", "phaserGameKey****39");
 
     const mort_text = this.add.text(452, 60, 'Mort (Cost: 500)', { fontFamily: 'sans-serif' });
     mort_text.setFontSize(10);
@@ -874,6 +873,11 @@ function create() {
             }
         }
     });
+
+    socket.on("auth approve", function(val) {
+        if (val) document.getElementById('authScreen').style.display="none";
+        else alert("Wrong password. Try again.")
+    });
 }
 
 var importantData, playerCount = 0, currIndex = -1;
@@ -903,6 +907,10 @@ function mostMissed2(dirr) {
 function restartGame() {
     socket.emit("restart");
     window.location.reload();
+}
+
+function checkPassword() {
+    socket.emit("authenticate", document.getElementById('pw_container').value);
 }
 
 var moneyTic = 5000, spawnTic = 0;
